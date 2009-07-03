@@ -14,6 +14,12 @@
 			<label index="tx_nhttnewsevents_application.comment">Comment</label>
 			<label index="tx_nhttnewsevents_application.attendance">Attendance</label>
 			<label index="tx_nhttnewsevents_application.ttnews_uid">Event</label>
+			<label index="tt_news.tx_nhttnewsevents_hide_in_list">Hide in list</label>
+			<label index="tt_news.tx_nhttnewsevents_enable_application">Enable application</label>
+			<label index="tt_news.tx_nhttnewsevents_organizer_email">Organizer E-Mail</label>
+			<label index="tt_news.tx_nhttnewsevents_max_attendees">Max. overall attendees</label>
+			<label index="tt_news.tx_nhttnewsevents_max_attendees_application">Max. attendees per application</label>
+			<label index="tt_news.tx_nhttnewsevents_left_openings_warning_limit">Left openings warning limit</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="tx_nhttnewsevents_application">Anmeldungen</label>
@@ -24,6 +30,12 @@
 			<label index="tx_nhttnewsevents_application.comment">Kommentar</label>
 			<label index="tx_nhttnewsevents_application.attendance">Teilnehmerzahl</label>
 			<label index="tx_nhttnewsevents_application.ttnews_uid">Veranstalltung</label>
+			<label index="tt_news.tx_nhttnewsevents_hide_in_list">In Liste verstecken</label>
+			<label index="tt_news.tx_nhttnewsevents_enable_application">Anmeldung möglich</label>
+			<label index="tt_news.tx_nhttnewsevents_organizer_email">Organisator E-Mail</label>
+			<label index="tt_news.tx_nhttnewsevents_max_attendees">Max. insgesamt Teilnehmerzahl</label>
+			<label index="tt_news.tx_nhttnewsevents_max_attendees_application">Max. Teilnehmerzahl pro Anmeldung</label>
+			<label index="tt_news.tx_nhttnewsevents_left_openings_warning_limit">Warnung wenn weniger freie Plätze als</label>
 		</languageKey>
 	</data>
 </T3locallang>

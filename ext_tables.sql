@@ -19,3 +19,17 @@ CREATE TABLE tx_nhttnewsevents_application (
 	PRIMARY KEY (uid),
 	KEY parent (pid)
 );
+
+
+
+#
+# Table structure for table 'tt_news'
+#
+CREATE TABLE tt_news (
+	tx_nhttnewsevents_hide_in_list tinyint(3) DEFAULT '0' NOT NULL,
+	tx_nhttnewsevents_enable_application tinyint(3) DEFAULT '0' NOT NULL,
+	tx_nhttnewsevents_organizer_email tinytext,
+	tx_nhttnewsevents_max_attendees int(11) DEFAULT '0' NOT NULL,
+	tx_nhttnewsevents_max_attendees_application int(11) DEFAULT '0' NOT NULL,
+	tx_nhttnewsevents_left_openings_warning_limit int(11) DEFAULT '0' NOT NULL
+);
