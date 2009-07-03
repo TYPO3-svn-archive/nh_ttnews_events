@@ -1,5 +1,5 @@
-#Fri Jul 03 11:54:17 CEST 2009
+#Fri Jul 03 12:43:35 CEST 2009
 eclipse.preferences.version=1
-include_path=0;/nh_ttnews_events
+include_path=0;/nh_ttnews_events\u00052;/typo3_src-4.2_LATEST
 phpVersion=php5
 use_asp_tags_as_php=false

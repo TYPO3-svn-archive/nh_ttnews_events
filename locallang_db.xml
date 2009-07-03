@@ -20,6 +20,10 @@
 			<label index="tt_news.tx_nhttnewsevents_max_attendees">Max. overall attendees</label>
 			<label index="tt_news.tx_nhttnewsevents_max_attendees_application">Max. attendees per application</label>
 			<label index="tt_news.tx_nhttnewsevents_left_openings_warning_limit">Left openings warning limit</label>
+			<label index="tt_news.tx_nhttnewsevents_detail_pid">Detail page</label>
+			<label index="tt_news.tx_nhttnewsevents_start">Event start</label>
+			<label index="tt_news.tx_nhttnewsevents_end">Evend end</label>
+			<label index="tt_news.tx_nhttnewsevents_application_until">Application possible until</label>			
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="tx_nhttnewsevents_application">Anmeldungen</label>
@@ -36,6 +40,10 @@
 			<label index="tt_news.tx_nhttnewsevents_max_attendees">Max. insgesamt Teilnehmerzahl</label>
 			<label index="tt_news.tx_nhttnewsevents_max_attendees_application">Max. Teilnehmerzahl pro Anmeldung</label>
 			<label index="tt_news.tx_nhttnewsevents_left_openings_warning_limit">Warnung wenn weniger freie Plätze als</label>
+			<label index="tt_news.tx_nhttnewsevents_detail_pid">Detail Seite</label>
+			<label index="tt_news.tx_nhttnewsevents_start">Veranstalltungs Beginn</label>
+			<label index="tt_news.tx_nhttnewsevents_end">Veranstalltungs Ende</label>
+			<label index="tt_news.tx_nhttnewsevents_application_until">Anmeldung möglich bis</label>			
 		</languageKey>
 	</data>
 </T3locallang>
