@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'nh_ttnews_events'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_nhttnewsevents_application">Application</label>
+			<label index="tx_nhttnewsevents_application.forename">Forename</label>
+			<label index="tx_nhttnewsevents_application.surname">Surname</label>
+			<label index="tx_nhttnewsevents_application.email">E-Mail</label>
+			<label index="tx_nhttnewsevents_application.institution">Institution</label>
+			<label index="tx_nhttnewsevents_application.comment">Comment</label>
+			<label index="tx_nhttnewsevents_application.attendance">Attendance</label>
+			<label index="tx_nhttnewsevents_application.ttnews_uid">Event</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tx_nhttnewsevents_application">Anmeldungen</label>
+			<label index="tx_nhttnewsevents_application.forename">Vorname</label>
+			<label index="tx_nhttnewsevents_application.surname">Nachname</label>
+			<label index="tx_nhttnewsevents_application.email">E-Mail</label>
+			<label index="tx_nhttnewsevents_application.institution">Institution</label>
+			<label index="tx_nhttnewsevents_application.comment">Kommentar</label>
+			<label index="tx_nhttnewsevents_application.attendance">Teilnehmerzahl</label>
+			<label index="tx_nhttnewsevents_application.ttnews_uid">Veranstalltung</label>
+		</languageKey>
+	</data>
+</T3locallang>
