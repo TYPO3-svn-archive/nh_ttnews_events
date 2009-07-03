@@ -5,4 +5,7 @@ if (!defined ('TYPO3_MODE')) {
 t3lib_extMgm::addUserTSConfig('
 	options.saveDocNew.tx_nhttnewsevents_application=1
 ');
+
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['tt_news']['selectConfHook'][] =
+	'EXT:nh_ttnews_events/class.tx_nhttnewsevents_hooks.php:&tx_nhttnewsevents_hooks';
 ?>

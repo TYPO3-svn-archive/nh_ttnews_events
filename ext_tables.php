@@ -28,6 +28,7 @@ $tempColumns = array (
 	),
 	'tx_nhttnewsevents_start' => array (
 			'exclude' => 0,
+			'l10n_mode' => 'exclude',
 			'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_start',
 			'config' => array (
 					'type' => 'input',
@@ -40,6 +41,7 @@ $tempColumns = array (
 	),
 	'tx_nhttnewsevents_end' => array (
 			'exclude' => 0,
+			'l10n_mode' => 'exclude',
 			'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_end',
 			'config' => array (
 					'type' => 'input',
@@ -61,6 +63,7 @@ $tempColumns = array (
 	),
 	'tx_nhttnewsevents_application_until' => array (
 			'exclude' => 0,
+			'l10n_mode' => 'exclude',
 			'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_application_until',
 			'config' => array (
 					'type' => 'input',
@@ -137,6 +140,7 @@ $tempColumns = array (
 	),
 	'tx_nhttnewsevents_detail_pid' => array (
 			'exclude' => 0,
+			'l10n_mode' => 'exclude',
 			'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_detail_pid',
 			'config' => array (
 					'type' => 'group',

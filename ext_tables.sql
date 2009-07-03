@@ -27,6 +27,7 @@ CREATE TABLE tx_nhttnewsevents_application (
 #
 CREATE TABLE tt_news (
 	tx_nhttnewsevents_hide_in_list tinyint(3) DEFAULT '0' NOT NULL,
+	tx_nhttnewsevents_detail_pid int(11) DEFAULT '0' NOT NULL,
 	tx_nhttnewsevents_start int(11) DEFAULT '0' NOT NULL,
 	tx_nhttnewsevents_end int(11) DEFAULT '0' NOT NULL,
 	tx_nhttnewsevents_enable_application tinyint(3) DEFAULT '0' NOT NULL,
