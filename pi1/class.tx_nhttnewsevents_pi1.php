@@ -6,17 +6,17 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 	public $prefixId = 'tx_nhttnewsevents_pi1';
 	public $scriptRelPath = 'pi1/class.tx_nhttnewsevents_pi.php';
 	protected $templateCode;
+	protected $errorMessages = array();
 
 	public function main($content, $conf) {
 		$this->conf = $conf;
 		$this->pi_loadLL();
 		$this->templateCode = $this->cObj->fileResource($conf['templateFile']);
 
-		$errorMessages = array();
 		if ($this->piVars) {
-			$errorMessages = $this->processValidation();
+			$this->errorMessages = $this->processValidation();
 		}
-		t3lib_div::debug($errorMessages);
+		t3lib_div::debug($this->errorMessages);
 
 		$content = $this->renderApplicationForm();
 		return $content;
@@ -32,10 +32,29 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 		$template = $this->replacePrefixMarker($template, 'FIELD_',
 			array(&$this, 'getPivarForMarker'));
 
+		$subpartArray = array('###ERRORS###' => $this->getErrorMarkup($template));
 		$markerArray = array('###FORM_ACTION###' => $this->getFormAction());
 
-		$template = $this->cObj->substituteMarkerArray($template, $markerArray);
+		$template = $this->cObj->substituteMarkerArrayCached($template,
+			$markerArray, $subpartArray);
 		return $template;
+	}
+
+	protected function getErrorMarkup($template) {
+		if (empty($this->errorMessages))
+			return;
+
+		$errorMarkup = '';
+		$template = $this->cObj->getSubpart($template, '###ERRORS###');
+		$templateItem = $this->cObj->getSubpart($template, '###ERROR_ITEM###');
+
+		foreach($this->errorMessages as $message)
+			$errorMarkup .= $this->cObj->substituteMarker($templateItem,
+				'###MESSAGE###', $message);
+		$errorMarkup = $this->cObj->substituteSubpart($template,
+				'###ERROR_ITEM###', $errorMarkup, 0);
+
+		return $errorMarkup;
 	}
 
 	protected function processValidation() {
@@ -52,7 +71,6 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 						break;
 					case 'email' :
 						if (trim($fieldvalue))
-
 						break;
 				}
 
@@ -60,6 +78,7 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 					if (!$message = $this->pi_getLL($validation['message']))
 						$message = $validation['message'];
 					$errorMessages[] = sprintf($message, $fieldValue);
+
 				}
 			}
 		}

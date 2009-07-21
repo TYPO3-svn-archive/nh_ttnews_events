@@ -17,6 +17,7 @@
 			<label index="please_enter_surname">Please enter your surname!</label>
 			<label index="please_enter_email">Please enter your e-mail address!</label>
 			<label index="invalid_email">"%s" ist not a valid e-mail address.</label>
+			<label index="errors_headline">Error(s) occured!</label>
 		</languageKey>
 		<languageKey index="de" type="array"></languageKey>
 	</data>
