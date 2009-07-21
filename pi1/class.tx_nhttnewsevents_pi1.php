@@ -29,7 +29,8 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 				'institution' => $this->piVars['institution'],
 				'comment' => $this->piVars['comment'],
 				'attendance' =>$this->piVars['attendance'],
-				'ttnews_uid' =>(int)$_GET['tx_ttnews']['tt_news']);
+				'ttnews_uid' =>(int)$_GET['tx_ttnews']['tt_news'],
+				'remote_ip' => $_SERVER['REMOTE_ADDR']);
 
 			$GLOBALS['TYPO3_DB']->exec_INSERTquery('tx_nhttnewsevents_application',
 				 $insertArray, 'pid, ttnews_uid, crdate, tstamp');

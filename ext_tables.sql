@@ -14,8 +14,9 @@ CREATE TABLE tx_nhttnewsevents_application (
 	institution tinytext,
 	comment text,
 	attendance tinytext,
+	remote_ip varchar(15) DEFAULT NULL,
 	ttnews_uid int(11) DEFAULT '0' NOT NULL,
-	
+
 	PRIMARY KEY (uid),
 	KEY parent (pid)
 );
