@@ -90,6 +90,10 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 						if (trim($fieldValue))
 							$ok = t3lib_div::validEmail($fieldValue);
 						break;
+					case 'unique' :
+						 //@todo: Check for type of fieldValue to ensure correct quoting
+						if (trim($fieldValue))
+							$ok = $this->hasAlreadyApplied($fieldName . '=\'' . $fieldValue .'\'');
 				}
 
 				if (!$ok) {
@@ -103,6 +107,15 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 
 		return $errorMessages;
 	}
+
+	protected function hasAlreadyApplied($conditions) {
+		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', 'tx_nhttnewsevents_application',
+			$conditions . ' AND ' . 'ttnews_uid=' . (int)$_GET['tx_ttnews']['tt_news'] .
+				$this->cObj->enableFields('tx_nhttnewsevents_application'));
+
+		return (bool)!$GLOBALS['TYPO3_DB']->sql_num_rows($res);
+	}
+
 	protected function replacePrefixMarker($template, $prefix, $callback) {
 		$template = preg_replace_callback('/###' . $prefix .'(\w*)###/',
 			$callback, $template);

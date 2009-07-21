@@ -20,7 +20,9 @@ plugin.tx_nhttnews_events_pi1 {
 				10.rule = required
 				10.message = please_enter_email
 				20.rule = email
-				20.message =invalid_email
+				20.message = invalid_email
+				30.rule = unique
+				30.message = email_already_existing
 			}
 		}
 
