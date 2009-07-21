@@ -13,10 +13,27 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 		$this->pi_loadLL();
 		$this->templateCode = $this->cObj->fileResource($conf['templateFile']);
 
+		 //@todo: Respect default piVars
 		if ($this->piVars) {
 			$this->errorMessages = $this->processValidation();
 		}
-		t3lib_div::debug($this->errorMessages);
+
+		if (empty($this->errorMessages)) {
+			$insertArray = array(
+				'pid' => $this->getStoragePid(),
+				'tstamp' => time(),
+				'crdate' => time(),
+				'forename' => $this->piVars['forename'],
+				'surname'=> $this->piVars['surname'],
+				'email'=> $this->piVars['email'],
+				'institution' => $this->piVars['institution'],
+				'comment' => $this->piVars['comment'],
+				'attendance' =>$this->piVars['attendance'],
+				'ttnews_uid' =>(int)$_GET['tx_ttnews']['tt_news']);
+
+			$GLOBALS['TYPO3_DB']->exec_INSERTquery('tx_nhttnewsevents_application',
+				 $insertArray, 'pid, ttnews_uid, crdate, tstamp');
+		}
 
 		$content = $this->renderApplicationForm();
 		return $content;
@@ -70,7 +87,8 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 						$ok = (bool) trim($fieldValue);
 						break;
 					case 'email' :
-						if (trim($fieldvalue))
+						if (trim($fieldValue))
+							$ok = t3lib_div::validEmail($fieldValue);
 						break;
 				}
 
@@ -108,6 +126,14 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 			'returnLast' => 'url');
 
 		return $this->cObj->typolink(NULL, $tsConfig);
+	}
+
+	protected function getStoragePid() {
+		 //@todo: Add more possibilites e.g. page storage folder etc.
+		if ($this->conf['storagePid'])
+			return (int)$this->conf['storagePid'];
+
+		return $GLOBALS['TSFE'']->id;
 	}
 
 }
