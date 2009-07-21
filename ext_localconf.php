@@ -8,4 +8,7 @@ t3lib_extMgm::addUserTSConfig('
 
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['tt_news']['selectConfHook'][] =
 	'EXT:nh_ttnews_events/class.tx_nhttnewsevents_hooks.php:&tx_nhttnewsevents_hooks';
+
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['tt_news']['extraItemMarkerHook'][] =
+	'EXT:nh_ttnews_events/class.tx_nhttnewsevents_hooks.php:&tx_nhttnewsevents_hooks';
 ?>

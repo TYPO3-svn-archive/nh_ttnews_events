@@ -1,0 +1,31 @@
+plugin.tx_nhttnews_events_pi1 {
+	userFunc = tx_nhttnewsevents_pi1->main
+	templateFile = {$plugin.tx_nhttnews_events_pi1.templateFile}
+	applicationStoragePid = {$plugin.tx_nhttnews_events_pi1.applicationStoragePid}
+	fieldProcessing {
+		forename {
+			validation {
+				10.rule = required
+				10.message = please_enter_forename
+			}
+		}
+		surname {
+			validation {
+				10.rule = required
+				10.message = please_enter_surname
+			}
+		}
+		email {
+			validation {
+				10.rule = required
+				10.message = please_enter_email
+				20.rule = email
+				20.message =invalid_email
+			}
+		}
+
+	}
+}
+
+plugin.tt_news = USER_INT
+plugin.tt_news.tx_nhttnews_events_pi1 < plugin.tx_nhttnews_events_pi1

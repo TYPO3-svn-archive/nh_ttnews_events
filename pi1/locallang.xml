@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for plugin &quot;tx_nhttnewsevents_pi1&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="forename">Forename</label>
+			<label index="surname">Surname</label>
+			<label index="institution">Institution</label>
+			<label index="email">E-Mail</label>
+			<label index="attendance">Attendance</label>
+			<label index="comment">Comment</label>
+			<label index="submit">Submit</label>
+			<label index="please_enter_forename">Please enter your forname!</label>
+			<label index="please_enter_surname">Please enter your surname!</label>
+			<label index="please_enter_email">Please enter your e-mail address!</label>
+			<label index="invalid_email">"%s" ist not a valid e-mail address.</label>
+		</languageKey>
+		<languageKey index="de" type="array"></languageKey>
+	</data>
+</T3locallang>

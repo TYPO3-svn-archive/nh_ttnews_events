@@ -1,0 +1,4 @@
+plugin.tx_nhttnews_events_pi1 {
+	templateFile = EXT:nh_ttnews_events/pi1/template.tmpl
+	applicationStoragePid =
+}

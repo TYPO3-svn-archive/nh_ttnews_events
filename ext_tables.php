@@ -2,26 +2,29 @@
 if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
+
+t3lib_extMgm::addStaticFile($_EXTKEY, 'pi1/static', 'News to events');
+
 $TCA['tx_nhttnewsevents_application'] = array (
 	'ctrl' => array (
-		'title' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tx_nhttnewsevents_application',		
-		'label' => 'uid',	
+		'title' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tx_nhttnewsevents_application',
+		'label' => 'uid',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
-		'default_sortby' => 'ORDER BY crdate',	
-		'delete' => 'deleted',	
+		'default_sortby' => 'ORDER BY crdate',
+		'delete' => 'deleted',
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'tca.php',
 		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'icon_tx_nhttnewsevents_application.gif'
 	)
 );
 
 $tempColumns = array (
-	'tx_nhttnewsevents_hide_in_list' => array (		
+	'tx_nhttnewsevents_hide_in_list' => array (
 		'exclude' => 0,
-		'l10n_mode' => 'exclude',				
+		'l10n_mode' => 'exclude',
 		'label' =>
-			'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_hide_in_list',		
+			'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_hide_in_list',
 		'config' => array (
 			'type' => 'check'
 		)
@@ -52,11 +55,11 @@ $tempColumns = array (
 					'default' => '0'
 			)
 	),
-	'tx_nhttnewsevents_enable_application' => array (		
+	'tx_nhttnewsevents_enable_application' => array (
 		'exclude' => 0,
-		'l10n_mode' => 'exclude',		
+		'l10n_mode' => 'exclude',
 		'label' =>
-			'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_enable_application',		
+			'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_enable_application',
 		'config' => array (
 			'type' => 'check'
 		)
@@ -73,22 +76,22 @@ $tempColumns = array (
 					'checkbox' => '0',
 					'default' => '0'
 			)
-	),	
-	'tx_nhttnewsevents_organizer_email' => array (		
+	),
+	'tx_nhttnewsevents_organizer_email' => array (
 		'exclude' => 0,
-		'l10n_mode' => 'exclude',		
+		'l10n_mode' => 'exclude',
 		'label' =>
-			'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_organizer_email',		
+			'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_organizer_email',
 		'config' => array (
-			'type' => 'input',	
+			'type' => 'input',
 			'size' => '30'
 		)
 	),
-	'tx_nhttnewsevents_max_attendees' => array (		
+	'tx_nhttnewsevents_max_attendees' => array (
 		'exclude' => 0,
-		'l10n_mode' => 'exclude',				
+		'l10n_mode' => 'exclude',
 		'label' =>
-			'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_max_attendees',		
+			'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_max_attendees',
 		'config' => array (
 			'type' => 'input',
 			'size' => '4',
@@ -102,11 +105,11 @@ $tempColumns = array (
 			'default' => 0
 		)
 	),
-	'tx_nhttnewsevents_max_attendees_application' => array (		
+	'tx_nhttnewsevents_max_attendees_application' => array (
 		'exclude' => 0,
-		'l10n_mode' => 'exclude',		
+		'l10n_mode' => 'exclude',
 		'label' =>
-			'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_max_attendees_application',		
+			'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_max_attendees_application',
 		'config' => array (
 			'type' => 'input',
 			'size' => '4',
@@ -120,11 +123,11 @@ $tempColumns = array (
 			'default' => 0
 		)
 	),
-	'tx_nhttnewsevents_left_openings_warning_limit' => array (		
+	'tx_nhttnewsevents_left_openings_warning_limit' => array (
 		'exclude' => 0,
-		'l10n_mode' => 'exclude',			
+		'l10n_mode' => 'exclude',
 		'label' =>
-			'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_left_openings_warning_limit',		
+			'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_left_openings_warning_limit',
 		'config' => array (
 			'type' => 'input',
 			'size' => '4',
@@ -150,16 +153,16 @@ $tempColumns = array (
 					'minitems' => 0,
 					'maxitems' => 1
 			)
-	),	
+	),
 );
 
 
 t3lib_div::loadTCA('tt_news');
 t3lib_extMgm::addTCAcolumns('tt_news', $tempColumns,1);
 t3lib_extMgm::addToAllTCAtypes('tt_news',
-	'--div--;LLL:EXT:nh_ttnews_events/locallang_db.xml:tx_nhttnewsevents_application.ttnews_uid,' . 
-	'tx_nhttnewsevents_hide_in_list;;;;1-1-1,tx_nhttnewsevents_start, tx_nhttnewsevents_end,' . 
-	'tx_nhttnewsevents_detail_pid, tx_nhttnewsevents_enable_application;;;;1-1-1,' . 
+	'--div--;LLL:EXT:nh_ttnews_events/locallang_db.xml:tx_nhttnewsevents_application.ttnews_uid,' .
+	'tx_nhttnewsevents_hide_in_list;;;;1-1-1,tx_nhttnewsevents_start, tx_nhttnewsevents_end,' .
+	'tx_nhttnewsevents_detail_pid, tx_nhttnewsevents_enable_application;;;;1-1-1,' .
 	'tx_nhttnewsevents_application_until,' .
 	'tx_nhttnewsevents_organizer_email, tx_nhttnewsevents_max_attendees,' .
 	'tx_nhttnewsevents_max_attendees_application, tx_nhttnewsevents_left_openings_warning_limit'');
