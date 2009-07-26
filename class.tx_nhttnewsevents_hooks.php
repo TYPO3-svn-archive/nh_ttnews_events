@@ -9,13 +9,14 @@ class tx_nhttnewsevents_hooks {
 	}
 
 	public function extraItemMarkerProcessor($markerArray, $row, $lConf, $pObj) {
-		if ($pObj->config['code'] != 'SINGLE')
+		if ($pObj->config['code'] != 'SINGLE' || !$row['tx_nhttnewsevents_enable_application'])
 			return $markerArray;
 
 		$tsConf = array();
 		$tsConf['10'] = 'COA_INT';
 		$tsConf['10.']['10'] = 'USER';
 		$tsConf['10.']['10.'] = $pObj->conf['tx_nhttnews_events_pi1.'];
+		$tsConf['10.']['10.']['recordData.'] = $row;
 
 		$pluginOutput =
 			$pObj->cObj->cObjGetSingle($tsConf['10'], $tsConf['10.']);

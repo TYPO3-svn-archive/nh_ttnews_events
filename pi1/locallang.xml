@@ -13,12 +13,24 @@
 			<label index="attendance">Attendance</label>
 			<label index="comment">Comment</label>
 			<label index="submit">Submit</label>
+			<label index="event">Event</label>
 			<label index="please_enter_forename">Please enter your forname!</label>
 			<label index="please_enter_surname">Please enter your surname!</label>
 			<label index="please_enter_email">Please enter your e-mail address!</label>
-			<label index="invalid_email">"%s" ist not a valid e-mail address.</label>
+			<label index="please_enter_attendance">Please enter attendance!</label>
+			<label index="invalid_email">"%s" is not a valid e-mail address.</label>
+			<label index="invalid_attendance">"%s" is not a valid value for the field attendance. Please enter a number.</label>
 			<label index="errors_headline">Error(s) occured!</label>
 			<label index="email_already_existing">There is already an application for this event for "%s"</label>
+			<label index="thank_you_headline">Thank you</label>
+			<label index="thank_you_body">Your application has been saved successfully.</label>
+			<label index="already_applied_headline">Already applied.</label>
+			<label index="already_applied_body">You've already applied to this event.</label>
+			<label index="application_period_expired_headline">Application period expired.</label>
+			<label index="application_period_expired_body">The application period for this event has expired.</label>
+			<label index="application_locked_headline">Application locked.</label>
+			<label index="application_locked_body">The is only one application possible per IP and event within a certain time period.</label>
+			<label index="max_attendees_application_exceeded">"%s" exceeds the maximum number of attendees per application ("%s").</label>
 		</languageKey>
 		<languageKey index="de" type="array"></languageKey>
 	</data>

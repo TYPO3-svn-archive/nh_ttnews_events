@@ -1,7 +1,20 @@
 plugin.tx_nhttnews_events_pi1 {
 	userFunc = tx_nhttnewsevents_pi1->main
 	templateFile = {$plugin.tx_nhttnews_events_pi1.templateFile}
-	applicationStoragePid = {$plugin.tx_nhttnews_events_pi1.applicationStoragePid}
+	storagePid = {$plugin.tx_nhttnews_events_pi1.storagePid}
+	ipLockPeriod = {$plugin.tx_nhttnews_events_pi1.ipLockPeriod}
+	warningEmail {
+		fromName = Nikolas Hagelstein
+		fromEmail = nikolas.hagelstein@gmail.com
+		subject = Application warning limit reached
+	}
+
+	commentEmail {
+		fromName = Nikolas Hagelstein
+		fromEmail = nikolas.hagelstein@gmail.com
+		subject = Application comment
+	}
+
 	fieldProcessing {
 		forename {
 			validation {
@@ -25,7 +38,17 @@ plugin.tx_nhttnews_events_pi1 {
 				30.message = email_already_existing
 			}
 		}
-
+		attendance {
+			validation {
+				10.rule = required
+				10.message = please_enter_attendance
+				20.rule = numeric
+				20.message = invalid_attendance
+				30.rule = lessThanOrEqualField
+				30.field = tx_nhttnewsevents_max_attendees_application
+				30.message = max_attendees_application_exceeded
+			}
+		}
 	}
 }
 
