@@ -35,7 +35,7 @@
 			<label index="tx_nhttnewsevents_application.institution">Institution</label>
 			<label index="tx_nhttnewsevents_application.comment">Kommentar</label>
 			<label index="tx_nhttnewsevents_application.attendance">Teilnehmerzahl</label>
-			<label index="tx_nhttnewsevents_application.ttnews_uid">Veranstalltung</label>
+			<label index="tx_nhttnewsevents_application.ttnews_uid">Veranstaltung</label>
 			<label index="tt_news.tx_nhttnewsevents_hide_in_list">In Liste verstecken</label>
 			<label index="tt_news.tx_nhttnewsevents_enable_application">Anmeldung möglich</label>
 			<label index="tt_news.tx_nhttnewsevents_organizer_email">Organisator E-Mail</label>
@@ -43,10 +43,10 @@
 			<label index="tt_news.tx_nhttnewsevents_max_attendees_application">Max. Teilnehmerzahl pro Anmeldung</label>
 			<label index="tt_news.tx_nhttnewsevents_left_openings_warning_limit">Warnung wenn weniger freie Plätze als</label>
 			<label index="tt_news.tx_nhttnewsevents_detail_pid">Detail Seite</label>
-			<label index="tt_news.tx_nhttnewsevents_start">Veranstalltungs Beginn</label>
-			<label index="tt_news.tx_nhttnewsevents_end">Veranstalltungs Ende</label>
+			<label index="tt_news.tx_nhttnewsevents_start">Veranstaltungs Beginn</label>
+			<label index="tt_news.tx_nhttnewsevents_end">Veranstaltungs Ende</label>
 			<label index="tt_news.tx_nhttnewsevents_application_until">Anmeldung möglich bis</label>
-			<label index="tt_news.tx_nhttnewsevents_export">Alle Anmeldungen zu dieser Veranstalltung zu exportieren</label>
+			<label index="tt_news.tx_nhttnewsevents_export">Alle Anmeldungen zu dieser Veranstaltung zu exportieren</label>
 			<label index="tt_news.tx_nhttnewsevents_detail_link">Link zu diesem Event. (Detail Seite muss gesetzt sein!)</label>
 		</languageKey>
 	</data>

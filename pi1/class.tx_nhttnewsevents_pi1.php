@@ -131,6 +131,12 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 		return $template;
 	}
 
+	protected function renderCommentEmail() {
+		$template = $this->cObj->getSubpart($this->templateCode, '###COMMENT_EMAIL###');
+		$template = $this->replaceDefaultMarkers($template);
+
+		return $template;
+	}
 	protected function getErrorMarkup($template) {
 		if (empty($this->errorMessages))
 			return;
@@ -150,6 +156,7 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 
 	protected function processValidation() {
 		$errorMessages = array();
+		 //@todo: Will fail if just one piVar is specified e.g via get.
 		foreach($this->piVars as $fieldName => $fieldValue) {
 			if (!$validations = $this->conf['fieldProcessing.'][$fieldName . '.']['validation.'])
 				continue;
@@ -262,7 +269,7 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 
 	protected function getOrganizerEmail() {
 		if ($this->conf['recordData.']['tx_nhttnewsevents_organizer_email'])
-			return (int)$this->conf['storagePid'];
+			return $this->conf['recordData.']['tx_nhttnewsevents_organizer_email'];
 
 		return $this->conf['organizerEmail'];
 
