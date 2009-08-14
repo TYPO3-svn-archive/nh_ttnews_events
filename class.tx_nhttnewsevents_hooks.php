@@ -23,9 +23,39 @@ class tx_nhttnewsevents_hooks {
 
 		$markerArray['###NEWS_CONTENT###'] .=  $pluginOutput;
 
-//		$args = func_get_args();
-//		t3lib_div::debug($args);
 		return $markerArray;
 	}
+
+	function processDatamap_preProcessFieldArray(&$incomingFieldArray, $table, $id, $pObj) {
+		if ($table != 'tt_news')
+			return;
+
+		if ($incomingFieldArray['tx_nhttnewsevents_export']) {
+			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('forename, surname, email,' .
+			 	'institution, comment, attendance', 'tx_nhttnewsevents_application',
+				'deleted=0 AND ttnews_uid=' . $id);
+
+			if ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
+				 //@todo: Use localland_db.xml instead
+				$csvData = 'forename;surname;email;institution;comment;attendance' ."\n";
+				do {
+					$csvData .= implode(';', $row). "\n";
+				} while($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res));
+
+				header('Content-Type: text/csv');
+				header('Content-Disposition: attachment; filename=test.csv');
+				header('Content-Description: csv File');
+				header('Pragma: no-cache');
+				header('Expires: 0');
+				echo $csvData;
+				exit;
+			}
+
+		}
+
+		unset($incomingFieldArray['tx_nhttnewsevents_export']);
+	}
+
+
 }
 ?>

@@ -23,7 +23,8 @@
 			<label index="tt_news.tx_nhttnewsevents_detail_pid">Detail page</label>
 			<label index="tt_news.tx_nhttnewsevents_start">Event start</label>
 			<label index="tt_news.tx_nhttnewsevents_end">Evend end</label>
-			<label index="tt_news.tx_nhttnewsevents_application_until">Application possible until</label>			
+			<label index="tt_news.tx_nhttnewsevents_application_until">Application possible until</label>
+			<label index="tt_news.tx_nhttnewsevents_export">Export all application for this Event</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="tx_nhttnewsevents_application">Anmeldungen</label>
@@ -43,7 +44,8 @@
 			<label index="tt_news.tx_nhttnewsevents_detail_pid">Detail Seite</label>
 			<label index="tt_news.tx_nhttnewsevents_start">Veranstalltungs Beginn</label>
 			<label index="tt_news.tx_nhttnewsevents_end">Veranstalltungs Ende</label>
-			<label index="tt_news.tx_nhttnewsevents_application_until">Anmeldung möglich bis</label>			
+			<label index="tt_news.tx_nhttnewsevents_application_until">Anmeldung möglich bis</label>
+			<label index="tt_news.tx_nhttnewsevents_export">Alle Anmeldungen zu dieser Veranstalltung zu exportieren</label>
 		</languageKey>
 	</data>
 </T3locallang>

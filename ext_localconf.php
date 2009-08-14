@@ -11,4 +11,7 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['tt_news']['selectConfHook'][] =
 
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['tt_news']['extraItemMarkerHook'][] =
 	'EXT:nh_ttnews_events/class.tx_nhttnewsevents_hooks.php:&tx_nhttnewsevents_hooks';
+
+$GLOBALS ['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] =
+	 'EXT:nh_ttnews_events/class.tx_nhttnewsevents_hooks.php:&tx_nhttnewsevents_hooks';
 ?>

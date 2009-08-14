@@ -154,6 +154,14 @@ $tempColumns = array (
 					'maxitems' => 1
 			)
 	),
+	'tx_nhttnewsevents_export' => array (
+			'exclude' => 0,
+			'l10n_mode' => 'exclude',
+			'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_export',
+			'config' => array (
+					'type' => 'check',
+			)
+	)
 );
 
 
@@ -165,5 +173,6 @@ t3lib_extMgm::addToAllTCAtypes('tt_news',
 	'tx_nhttnewsevents_detail_pid, tx_nhttnewsevents_enable_application;;;;1-1-1,' .
 	'tx_nhttnewsevents_application_until,' .
 	'tx_nhttnewsevents_organizer_email, tx_nhttnewsevents_max_attendees,' .
-	'tx_nhttnewsevents_max_attendees_application, tx_nhttnewsevents_left_openings_warning_limit'');
+	'tx_nhttnewsevents_max_attendees_application, tx_nhttnewsevents_left_openings_warning_limit, ' .
+	'tx_nhttnewsevents_export');
 ?>
