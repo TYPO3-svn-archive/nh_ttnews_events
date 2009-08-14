@@ -25,6 +25,7 @@
 			<label index="tt_news.tx_nhttnewsevents_end">Evend end</label>
 			<label index="tt_news.tx_nhttnewsevents_application_until">Application possible until</label>
 			<label index="tt_news.tx_nhttnewsevents_export">Export all application for this Event</label>
+			<label index="tt_news.tx_nhttnewsevents_detail_link">Link to this event. (Detail pid needs to be set!)</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="tx_nhttnewsevents_application">Anmeldungen</label>
@@ -46,6 +47,7 @@
 			<label index="tt_news.tx_nhttnewsevents_end">Veranstalltungs Ende</label>
 			<label index="tt_news.tx_nhttnewsevents_application_until">Anmeldung möglich bis</label>
 			<label index="tt_news.tx_nhttnewsevents_export">Alle Anmeldungen zu dieser Veranstalltung zu exportieren</label>
+			<label index="tt_news.tx_nhttnewsevents_detail_link">Link zu diesem Event. (Detail Seite muss gesetzt sein!)</label>
 		</languageKey>
 	</data>
 </T3locallang>

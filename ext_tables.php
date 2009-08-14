@@ -2,6 +2,7 @@
 if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
+include_once(t3lib_extMgm::extPath($_EXTKEY) . 'class.tx_nhttnewsevents_userfunc.php');
 
 t3lib_extMgm::addStaticFile($_EXTKEY, 'pi1/static', 'News to events');
 
@@ -155,11 +156,22 @@ $tempColumns = array (
 			)
 	),
 	'tx_nhttnewsevents_export' => array (
+			'displayCond' => 'REC:NEW:false',
 			'exclude' => 0,
 			'l10n_mode' => 'exclude',
 			'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_export',
 			'config' => array (
 					'type' => 'check',
+			)
+	),
+	'tx_nhttnewsevents_detail_link' => array (
+			'displayCond' => 'REC:NEW:false',
+			'exclude' => 0,
+			'l10n_mode' => 'exclude',
+			'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_detail_link',
+			'config' => array (
+					'type' => 'user',
+					'userFunc' => 'tx_nhttnewsevents_userfunc->displayDetailLink',
 			)
 	)
 );
@@ -174,5 +186,6 @@ t3lib_extMgm::addToAllTCAtypes('tt_news',
 	'tx_nhttnewsevents_application_until,' .
 	'tx_nhttnewsevents_organizer_email, tx_nhttnewsevents_max_attendees,' .
 	'tx_nhttnewsevents_max_attendees_application, tx_nhttnewsevents_left_openings_warning_limit, ' .
-	'tx_nhttnewsevents_export');
+	'tx_nhttnewsevents_export, tx_nhttnewsevents_detail_link');
+
 ?>
