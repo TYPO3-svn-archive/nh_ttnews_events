@@ -50,7 +50,7 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 					$mail->from_email = $this->conf['warningEmail.']['fromEmail'];
 					$mail->subject = $this->conf['warningEmail.']['subject'];
 					$mail->addPlain($this->renderWarningEmail());
-					$mail->send($this->conf['recordData.']['tx_nhttnewsevents_organizer_email']);
+					$mail->send($this->getOrganizerEmail());
 				}
 
 				if (trim($this->piVars['comment'])) {
@@ -61,8 +61,7 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 					$mail->from_email = $this->conf['commentEmail.']['fromEmail'];
 					$mail->subject = $this->conf['commentEmail.']['subject'];
 					$mail->addPlain($this->renderCommentEmail());
-					$mail->send($this->conf['recordData.']['tx_nhttnewsevents_organizer_email']);
-
+					$mail->send($this->getOrganizerEmail());
 				}
 
 				$eventsAppliedTo = $GLOBALS['TSFE']->fe_user->getKey('ses', $this->prefixId);
@@ -259,6 +258,14 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 			return (int)$this->conf['storagePid'];
 
 		return $GLOBALS['TSFE']->id;
+	}
+
+	protected function getOrganizerEmail() {
+		if ($this->conf['recordData.']['tx_nhttnewsevents_organizer_email'])
+			return (int)$this->conf['storagePid'];
+
+		return $this->conf['organizerEmail'];
+
 	}
 
 	protected function applicationLimitReached() {

@@ -3,6 +3,7 @@ plugin.tx_nhttnews_events_pi1 {
 	templateFile = {$plugin.tx_nhttnews_events_pi1.templateFile}
 	storagePid = {$plugin.tx_nhttnews_events_pi1.storagePid}
 	ipLockPeriod = {$plugin.tx_nhttnews_events_pi1.ipLockPeriod}
+	organizerEmail = {$plugin.tx_nhttnews_events_pi1.organizerEmail}
 	warningEmail {
 		fromName = Nikolas Hagelstein
 		fromEmail = nikolas.hagelstein@gmail.com
