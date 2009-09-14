@@ -15,7 +15,7 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 		$this->templateCode = $this->cObj->fileResource($conf['templateFile']);
 		$this->ttnewsUid = (int)$_GET['tx_ttnews']['tt_news'];
 		$eventsAppliedTo = $GLOBALS['TSFE']->fe_user->getKey('ses', $this->prefixId);
-		$this->getNumberOfAttendees();
+
 		if ($this->conf['recordData.']['tx_nhttnewsevents_application_until'] < time()) {
 			$content = $this->renderApplicationPeriodExpired();
 		} elseif (is_array($eventsAppliedTo) && in_array($this->ttnewsUid, $eventsAppliedTo)) {
@@ -43,30 +43,22 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 					 $insertArray, 'pid, ttnews_uid, crdate, tstamp');
 
 				if ($this->applicationLimitReached()) {
-					 //@todo: Encapsulate within seperate function
-					$mail = t3lib_div::makeInstance('t3lib_htmlmail');
-					$mail->start();
-					$mail->from_name = $this->conf['warningEmail.']['fromName'];
-					$mail->from_email = $this->conf['warningEmail.']['fromEmail'];
-					$mail->subject = $this->conf['warningEmail.']['subject'];
-					$mail->addPlain($this->renderWarningEmail());
-					$mail->send($this->getOrganizerEmail());
+					$this->sendMail($this->conf['warningEmail.']['fromName'],
+						$this->conf['warningEmail.']['fromName'],
+						$this->conf['warningEmail.']['subject'],
+						$this->renderWarningEmail(),
+						$this->getOrganizerEmail());
 				}
 
 				if (trim($this->piVars['comment'])) {
-					 //@todo: Encapsulate within seperate function
-					$mail = t3lib_div::makeInstance('t3lib_htmlmail');
-					$mail->start();
-					$mail->from_name = $this->conf['commentEmail.']['fromName'];
-					$mail->from_email = $this->conf['commentEmail.']['fromEmail'];
-					$mail->subject = $this->conf['commentEmail.']['subject'];
-					$mail->addPlain($this->renderCommentEmail());
-					$mail->send($this->getOrganizerEmail());
+					$this->sendMail($this->conf['commentEmail.']['fromName'],
+						$this->conf['commentEmail.']['fromEmail'],
+						$this->conf['commentEmail.']['subject'],
+						$this->renderCommentEmail(),
+						$this->getOrganizerEmail());
 				}
 
-				$eventsAppliedTo = $GLOBALS['TSFE']->fe_user->getKey('ses', $this->prefixId);
 				$eventsAppliedTo [] = $this->ttnewsUid;
-
 				$GLOBALS['TSFE']->fe_user->setKey('ses' , $this->prefixId, $eventsAppliedTo);
 
 				$content = $this->renderThankYou();
@@ -137,6 +129,7 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 
 		return $template;
 	}
+
 	protected function getErrorMarkup($template) {
 		if (empty($this->errorMessages))
 			return;
@@ -155,11 +148,17 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 	}
 
 	protected function processValidation() {
+		if (!is_array($this->conf['fieldProcessing.']))
+			return;
+
 		$errorMessages = array();
-		 //@todo: Will fail if just one piVar is specified e.g via get.
-		foreach($this->piVars as $fieldName => $fieldValue) {
-			if (!$validations = $this->conf['fieldProcessing.'][$fieldName . '.']['validation.'])
+		t3lib_div::debug($this->piVars);
+		foreach($this->conf['fieldProcessing.'] as $fieldName => $processing) {
+			if (!$validations = $processing['validation.'])
 				continue;
+
+			$fieldName = substr($fieldName, 0, -1);
+			$fieldValue = $this->piVars[$fieldName];
 
 			foreach ($validations as $validation) {
 				$ok = FALSE;
@@ -283,6 +282,16 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 					$this->conf['recordData.']['tx_nhttnewsevents_left_openings_warning_limit']);
 		}
 		return FALSE;
+	}
+
+	protected function sendMail($fromName, $fromEmail, $subject, $content, $to) {
+		$mail = t3lib_div::makeInstance('t3lib_htmlmail');
+		$mail->start();
+		$mail->from_name = $fromName;
+		$mail->from_email = $fromEmail;
+		$mail->subject = $subject;
+		$mail->addPlain($content);
+		$mail->send($to);
 	}
 
 }
