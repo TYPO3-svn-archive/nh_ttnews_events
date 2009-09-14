@@ -17,8 +17,8 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 		$eventsAppliedTo = $GLOBALS['TSFE']->fe_user->getKey('ses', $this->prefixId);
 		$this->getNumberOfAttendees();
 		if ($this->conf['recordData.']['tx_nhttnewsevents_application_until'] < time()) {
-			$content =$this->renderApplicationPeriodExpired();
-		} elseif (in_array($this->ttnewsUid, $eventsAppliedTo)) {
+			$content = $this->renderApplicationPeriodExpired();
+		} elseif (is_array($eventsAppliedTo) && in_array($this->ttnewsUid, $eventsAppliedTo)) {
 			$content = $this->renderAlreadyApplied();
 		} elseif($this->hasApplication('crdate+' . (int)$this->conf['ipLockPeriod'] .
 			'>' . time() . ' AND remote_ip = \'' . $_SERVER['REMOTE_ADDR'] . '\'')) {
