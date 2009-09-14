@@ -17,12 +17,12 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 		$eventsAppliedTo = $GLOBALS['TSFE']->fe_user->getKey('ses', $this->prefixId);
 
 		if ($this->conf['recordData.']['tx_nhttnewsevents_application_until'] < time()) {
-			$content = $this->renderApplicationPeriodExpired();
+			$content = $this->renderSubPart('###APPLICATION_PERIOD_EXPIRED###');
 		} elseif (is_array($eventsAppliedTo) && in_array($this->ttnewsUid, $eventsAppliedTo)) {
-			$content = $this->renderAlreadyApplied();
+			$content = $this->renderSubPart('###ALREADY_APPLIED###');
 		} elseif($this->hasApplication('crdate+' . (int)$this->conf['ipLockPeriod'] .
 			'>' . time() . ' AND remote_ip = \'' . $_SERVER['REMOTE_ADDR'] . '\'')) {
-			$content = $this->renderApplicationLocked();
+			$content = $this->renderSubPart('###APPLICATION_LOCKED###');
 		} elseif ($this->piVars) { //@todo: Respect default piVars
 			$this->errorMessages = $this->processValidation();
 			if (empty($this->errorMessages)) {
@@ -46,7 +46,7 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 					$this->sendMail($this->conf['warningEmail.']['fromName'],
 						$this->conf['warningEmail.']['fromName'],
 						$this->conf['warningEmail.']['subject'],
-						$this->renderWarningEmail(),
+						$this->renderSubPart('###WARNING_EMAIL###'),
 						$this->getOrganizerEmail());
 				}
 
@@ -54,14 +54,14 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 					$this->sendMail($this->conf['commentEmail.']['fromName'],
 						$this->conf['commentEmail.']['fromEmail'],
 						$this->conf['commentEmail.']['subject'],
-						$this->renderCommentEmail(),
+						$this->renderSubPart('###COMMENT_EMAIL###'),
 						$this->getOrganizerEmail());
 				}
 
 				$eventsAppliedTo [] = $this->ttnewsUid;
 				$GLOBALS['TSFE']->fe_user->setKey('ses' , $this->prefixId, $eventsAppliedTo);
 
-				$content = $this->renderThankYou();
+				$content = $this->renderSubPart('###THANK_YOU###');
 			}
 		}
 
@@ -71,63 +71,30 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 		return $this->pi_wrapInBaseClass($content);
 	}
 
-	protected function renderApplicationForm() {
-		$template = $this->cObj->getSubpart($this->templateCode, '###APPLICATION###');
-		$template = $this->replaceDefaultMarkers($template);
+	protected function renderSubPart($subPartMarker) {
+		$content = $this->cObj->getSubpart($this->templateCode, $subPartMarker);
 
-		$subpartArray = array('###ERRORS###' => $this->getErrorMarkup($template));
+		$content = $this->replacePrefixMarkers($content, 'LL_',
+			array(&$this, 'getTranslationForMarkers'));
+
+		$content = $this->replacePrefixMarkers($content, 'FIELD_',
+			array(&$this, 'getPivarForMarkers'));
+
+		$content = $this->replacePrefixMarkers($content, 'RECORD_',
+			array(&$this, 'getRecordFieldForMarkers'));
+
+		return $content;
+	}
+
+	protected function renderApplicationForm() {
+		$content = $this->renderSubPart('###APPLICATION###');
+
+		$subpartArray = array('###ERRORS###' => $this->getErrorMarkup($content));
 		$markerArray = array('###FORM_ACTION###' => $this->getFormAction());
 
-		$template = $this->cObj->substituteMarkerArrayCached($template,
+		$content = $this->cObj->substituteMarkerArrayCached($content,
 			$markerArray, $subpartArray);
-		return $template;
-	}
-
-	 //@todo: Optimize rendering of simple subparts.
-	protected function renderThankYou() {
-		$template = $this->cObj->getSubpart($this->templateCode, '###THANK_YOU###');
-		$template = $this->replaceDefaultMarkers($template);
-
-		return $template;
-	}
-
-	 //@todo: Optimize rendering of simple subparts.
-	protected function renderAlreadyApplied() {
-		$template = $this->cObj->getSubpart($this->templateCode, '###ALREADY_APPLIED###');
-		$template = $this->replaceDefaultMarkers($template);
-
-		return $template;
-	}
-
-	 //@todo: Optimize rendering of simple subparts.
-	protected function renderApplicationPeriodExpired() {
-		$template = $this->cObj->getSubpart($this->templateCode, '###APPLICATION_PERIOD_EXPIRED###');
-		$template = $this->replaceDefaultMarkers($template);
-
-		return $template;
-	}
-
-	 //@todo: Optimize rendering of simple subparts.
-	protected function renderApplicationLocked() {
-		$template = $this->cObj->getSubpart($this->templateCode, '###APPLICATION_LOCKED###');
-		$template = $this->replaceDefaultMarkers($template);
-
-		return $template;
-	}
-
-	 //@todo: Optimize rendering of simple subparts.
-	protected function renderWarningEmail() {
-		$template = $this->cObj->getSubpart($this->templateCode, '###WARNING_EMAIL###');
-		$template = $this->replaceDefaultMarkers($template);
-
-		return $template;
-	}
-
-	protected function renderCommentEmail() {
-		$template = $this->cObj->getSubpart($this->templateCode, '###COMMENT_EMAIL###');
-		$template = $this->replaceDefaultMarkers($template);
-
-		return $template;
+		return $content;
 	}
 
 	protected function getErrorMarkup($template) {
@@ -205,19 +172,6 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 		return (bool)$GLOBALS['TYPO3_DB']->sql_num_rows($res);
 	}
 
-	protected function replaceDefaultMarkers($template) {
-		$template = $this->replacePrefixMarkers($template, 'LL_',
-			array(&$this, 'getTranslationForMarkers'));
-
-		$template = $this->replacePrefixMarkers($template, 'FIELD_',
-			array(&$this, 'getPivarForMarkers'));
-
-		$template = $this->replacePrefixMarkers($template, 'RECORD_',
-			array(&$this, 'getRecordFieldForMarkers'));
-
-		return $template;
-	}
-
 	protected function replacePrefixMarkers($template, $prefix, $callback) {
 		$template = preg_replace_callback('/###' . $prefix .'(\w*)###/',
 			$callback, $template);
@@ -271,7 +225,6 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 			return $this->conf['recordData.']['tx_nhttnewsevents_organizer_email'];
 
 		return $this->conf['organizerEmail'];
-
 	}
 
 	protected function applicationLimitReached() {
