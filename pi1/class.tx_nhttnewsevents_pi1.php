@@ -152,7 +152,7 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 			return;
 
 		$errorMessages = array();
-		t3lib_div::debug($this->piVars);
+
 		foreach($this->conf['fieldProcessing.'] as $fieldName => $processing) {
 			if (!$validations = $processing['validation.'])
 				continue;
