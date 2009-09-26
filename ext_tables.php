@@ -31,30 +31,30 @@ $tempColumns = array (
 		)
 	),
 	'tx_nhttnewsevents_start' => array (
-			'exclude' => 0,
-			'l10n_mode' => 'exclude',
-			'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_start',
-			'config' => array (
-					'type' => 'input',
-					'size' => '12',
-					'max' => '20',
-					'eval' => 'datetime',
-					'checkbox' => '0',
-					'default' => '0'
-			)
+		'exclude' => 0,
+		'l10n_mode' => 'exclude',
+		'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_start',
+		'config' => array (
+			'type' => 'input',
+			'size' => '12',
+			'max' => '20',
+			'eval' => 'datetime',
+			'checkbox' => '0',
+			'default' => '0'
+		)
 	),
 	'tx_nhttnewsevents_end' => array (
-			'exclude' => 0,
-			'l10n_mode' => 'exclude',
-			'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_end',
-			'config' => array (
-					'type' => 'input',
-					'size' => '12',
-					'max' => '20',
-					'eval' => 'datetime',
-					'checkbox' => '0',
-					'default' => '0'
-			)
+		'exclude' => 0,
+		'l10n_mode' => 'exclude',
+		'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_end',
+		'config' => array (
+			'type' => 'input',
+			'size' => '12',
+			'max' => '20',
+			'eval' => 'datetime',
+			'checkbox' => '0',
+			'default' => '0'
+		)
 	),
 	'tx_nhttnewsevents_enable_application' => array (
 		'exclude' => 0,
@@ -66,17 +66,17 @@ $tempColumns = array (
 		)
 	),
 	'tx_nhttnewsevents_application_until' => array (
-			'exclude' => 0,
-			'l10n_mode' => 'exclude',
-			'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_application_until',
-			'config' => array (
-					'type' => 'input',
-					'size' => '12',
-					'max' => '20',
-					'eval' => 'datetime',
-					'checkbox' => '0',
-					'default' => '0'
-			)
+		'exclude' => 0,
+		'l10n_mode' => 'exclude',
+		'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_application_until',
+		'config' => array (
+			'type' => 'input',
+			'size' => '12',
+			'max' => '20',
+			'eval' => 'datetime',
+			'checkbox' => '0',
+			'default' => '0'
+		)
 	),
 	'tx_nhttnewsevents_organizer_email' => array (
 		'exclude' => 0,
@@ -143,36 +143,36 @@ $tempColumns = array (
 		)
 	),
 	'tx_nhttnewsevents_detail_pid' => array (
-			'exclude' => 0,
-			'l10n_mode' => 'exclude',
-			'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_detail_pid',
-			'config' => array (
-					'type' => 'group',
-					'internal_type' => 'db',
-					'allowed' => 'pages',
-					'size' => 1,
-					'minitems' => 0,
-					'maxitems' => 1
-			)
+		'exclude' => 0,
+		'l10n_mode' => 'exclude',
+		'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_detail_pid',
+		'config' => array (
+			'type' => 'group',
+			'internal_type' => 'db',
+			'allowed' => 'pages',
+			'size' => 1,
+			'minitems' => 0,
+			'maxitems' => 1
+		)
 	),
 	'tx_nhttnewsevents_export' => array (
-			'displayCond' => 'REC:NEW:false',
-			'exclude' => 0,
-			'l10n_mode' => 'exclude',
-			'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_export',
-			'config' => array (
-					'type' => 'check',
-			)
+		'displayCond' => 'REC:NEW:false',
+		'exclude' => 0,
+		'l10n_mode' => 'exclude',
+		'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_export',
+		'config' => array (
+			'type' => 'check'
+		)
 	),
 	'tx_nhttnewsevents_detail_link' => array (
-			'displayCond' => 'REC:NEW:false',
-			'exclude' => 0,
-			'l10n_mode' => 'exclude',
-			'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_detail_link',
-			'config' => array (
-					'type' => 'user',
-					'userFunc' => 'tx_nhttnewsevents_userfunc->displayDetailLink',
-			)
+		'displayCond' => 'REC:NEW:false',
+		'exclude' => 0,
+		'l10n_mode' => 'exclude',
+		'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_detail_link',
+		'config' => array (
+			'type' => 'user',
+			'userFunc' => 'tx_nhttnewsevents_userfunc->displayDetailLink'
+		)
 	)
 );
 
