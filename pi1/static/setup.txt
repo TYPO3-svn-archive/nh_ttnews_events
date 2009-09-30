@@ -1,3 +1,4 @@
+includeLibs.tx_nhttnews = EXT:nh_ttnews_events/pi1/class.tx_nhttnewsevents_pi1.php
 plugin.tx_nhttnews_events_pi1 {
 	userFunc = tx_nhttnewsevents_pi1->main
 	templateFile = {$plugin.tx_nhttnews_events_pi1.templateFile}
