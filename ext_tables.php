@@ -9,7 +9,9 @@ t3lib_extMgm::addStaticFile($_EXTKEY, 'pi1/static', 'News to events');
 $TCA['tx_nhttnewsevents_application'] = array (
 	'ctrl' => array (
 		'title' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tx_nhttnewsevents_application',
-		'label' => 'uid',
+		'label' => 'surname',
+		'label_alt' =>'forename',
+		'label_alt_force' => TRUE,
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
