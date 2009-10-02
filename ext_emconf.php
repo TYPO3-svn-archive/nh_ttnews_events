@@ -33,6 +33,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'constraints' => array(
 		'depends' => array(
 			'tt_news' => '',
+			'pagepath' => ''
 		),
 		'conflicts' => array(
 		),

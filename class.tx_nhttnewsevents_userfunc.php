@@ -1,4 +1,5 @@
 <?php
+require_once(t3lib_extMgm::extPath('pagepath', 'class.tx_pagepath_api.php'));
 class tx_nhttnewsevents_userfunc {
 
 	public function displayDetailLink($pArray, $pObj) {
@@ -7,11 +8,10 @@ class tx_nhttnewsevents_userfunc {
 		if (!(int)$matches[1])
 			return;
 
-		$url = 'http://' . $_SERVER['SERVER_NAME'] . '/index.php?id=' .
-			$matches[1] . '&amp;tx_ttnews[tt_news]=' .
-			$pArray['row']['uid'];
+		$pagePath =
+			tx_pagepath_api::getPagePath($matches[1], array('tx_ttnews[tt_news]' => $pArray['row']['uid']));
 
-		return '<a target="_blank" href="' . $url . '">' . $url . '</a>';
+		return '<a target="_blank" href="' . $pagePath .'">' . $pagePath . '</a>';
 	}
 
 }
