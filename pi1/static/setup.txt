@@ -55,4 +55,4 @@ plugin.tx_nhttnews_events_pi1 {
 }
 
 plugin.tt_news = USER_INT
-plugin.tt_news.tx_nhttnews_events_pi1 = plugin.tx_nhttnews_events_pi1
+plugin.tt_news.tx_nhttnews_events_pi1 < plugin.tx_nhttnews_events_pi1

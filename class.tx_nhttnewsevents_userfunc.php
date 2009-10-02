@@ -14,5 +14,19 @@ class tx_nhttnewsevents_userfunc {
 		return '<a target="_blank" href="' . $pagePath .'">' . $pagePath . '</a>';
 	}
 
+	public function displayExportCheckBox($pArray, $pObj) {
+
+		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('count( * ) , sum( attendance )',
+			'tx_nhttnewsevents_application',
+			'deleted=0 AND ttnews_uid=' . $pArray['row']['uid']);
+
+		$row = $GLOBALS['TYPO3_DB']->sql_fetch_row($res);
+
+		$markup = '<input type="checkbox"  name="' .
+			$pArray['itemFormElName'].'" /> (' . $row[0]. '/'  . $row[1]. ')';
+
+		return $markup;
+	}
+
 }
 ?>

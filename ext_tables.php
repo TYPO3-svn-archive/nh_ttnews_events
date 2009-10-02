@@ -163,7 +163,8 @@ $tempColumns = array (
 		'l10n_mode' => 'exclude',
 		'label' => 'LLL:EXT:nh_ttnews_events/locallang_db.xml:tt_news.tx_nhttnewsevents_export',
 		'config' => array (
-			'type' => 'check'
+			'type' => 'user',
+			'userFunc' => 'tx_nhttnewsevents_userfunc->displayExportCheckBox'
 		)
 	),
 	'tx_nhttnewsevents_detail_link' => array (
