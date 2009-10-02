@@ -44,7 +44,7 @@ class tx_nhttnewsevents_pi1 extends tslib_pibase {
 
 				if ($this->applicationLimitReached()) {
 					$this->sendMail($this->conf['warningEmail.']['fromName'],
-						$this->conf['warningEmail.']['fromName'],
+						$this->conf['warningEmail.']['fromEmail'],
 						$this->conf['warningEmail.']['subject'],
 						$this->renderSubPart('###WARNING_EMAIL###'),
 						$this->getOrganizerEmail());
