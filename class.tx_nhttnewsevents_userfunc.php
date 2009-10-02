@@ -23,7 +23,7 @@ class tx_nhttnewsevents_userfunc {
 		$row = $GLOBALS['TYPO3_DB']->sql_fetch_row($res);
 
 		$markup = '<input type="checkbox"  name="' .
-			$pArray['itemFormElName'].'" /> (' . $row[0]. '/'  . $row[1]. ')';
+			$pArray['itemFormElName'].'" /> (' . (int)$row[0]. '/'  . (int)$row[1]. ')';
 
 		return $markup;
 	}
