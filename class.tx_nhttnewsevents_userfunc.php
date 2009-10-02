@@ -8,7 +8,7 @@ class tx_nhttnewsevents_userfunc {
 			return;
 
 		$url = 'http://' . $_SERVER['SERVER_NAME'] . '/index.php?id=' .
-			$matches[1] . '&tx_ttnews[tt_news]=' .
+			$matches[1] . '&amp;tx_ttnews[tt_news]=' .
 			$pArray['row']['uid'];
 
 		return '<a target="_blank" href="' . $url . '">' . $url . '</a>';
